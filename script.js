@@ -18,10 +18,56 @@ document.getElementById("tiktok").href = links.tiktok;
 
 
 
-// Extra loading effect
 
-window.onload = () => {
 
-    document.body.style.opacity = "1";
 
-};
+const starContainer = document.getElementById("stars");
+
+
+
+for(let i = 0; i < 220; i++){
+
+
+    const star = document.createElement("div");
+
+
+    star.className = "star";
+
+
+    const size =
+    Math.random() * 3 + 1;
+
+
+    star.style.width =
+    size + "px";
+
+
+    star.style.height =
+    size + "px";
+
+
+
+    star.style.left =
+    Math.random()*100 + "%";
+
+
+
+    star.style.top =
+    Math.random()*100 + "%";
+
+
+
+    star.style.animationDuration =
+    Math.random()*25 + 20 + "s";
+
+
+
+    star.style.animationDelay =
+    Math.random()*20 + "s";
+
+
+
+    starContainer.appendChild(star);
+
+
+}
