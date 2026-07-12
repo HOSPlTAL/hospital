@@ -14,48 +14,173 @@ document.getElementById("tiktok").href = links.tiktok;
 
 
 
-
-
+/* STAR SYSTEM */
 
 const stars = document.getElementById("stars");
 
 
-for(let i = 0; i < 300; i++){
+const starAmount = 450;
 
 
-let star = document.createElement("div");
+for(let i = 0; i < starAmount; i++){
+
+    const star = document.createElement("div");
+
+    star.className = "star";
 
 
-star.className="star";
+    const size = Math.random() * 3 + .5;
 
 
-let size = Math.random()*3+1;
+    star.style.width = size + "px";
+    star.style.height = size + "px";
 
 
-star.style.width=size+"px";
-star.style.height=size+"px";
+    star.style.left = Math.random()*100 + "%";
+    star.style.top = Math.random()*100 + "%";
 
 
-star.style.left=Math.random()*100+"%";
-star.style.top=Math.random()*100+"%";
+    star.style.opacity =
+        Math.random() * .8 + .2;
+
+
+    /*
+    Different star speeds
+    makes depth effect
+    */
+
+    const speed =
+        Math.random()*50 + 20;
+
+
+    star.style.animationDuration =
+        speed + "s";
+
+
+    star.style.animationDelay =
+        -(Math.random()*speed)+"s";
 
 
 
-star.style.opacity=Math.random();
+    /*
+    random horizontal drifting
+    */
+
+    const drift =
+        (Math.random()*200-100)+"px";
+
+
+    star.style.setProperty(
+        "--drift",
+        drift
+    );
 
 
 
-star.style.animationDuration =
-(Math.random()*40+20)+"s";
+    /*
+    random glow
+    */
+
+    if(size > 2.3){
+
+        star.style.boxShadow =
+        "0 0 8px white";
+
+    }
+
+
+    stars.appendChild(star);
+
+}
 
 
 
-star.style.animationDelay =
-Math.random()*20+"s";
 
 
 
-stars.appendChild(star);
+/* SHOOTING STARS */
+
+
+const shooting = 
+document.getElementById("shooting-stars");
+
+
+
+function createShootingStar(){
+
+    const star =
+    document.createElement("div");
+
+
+    star.className =
+    "shooting-star";
+
+
+    star.style.left =
+    Math.random()*80 + 20 + "%";
+
+
+    star.style.top =
+    Math.random()*40 + "%";
+
+
+    shooting.appendChild(star);
+
+
+
+    setTimeout(()=>{
+
+        star.remove();
+
+    },1500);
 
 
 }
+
+
+
+setInterval(()=>{
+
+
+    if(Math.random() > .35){
+
+        createShootingStar();
+
+    }
+
+
+},4000);
+
+
+
+
+
+
+/* subtle mouse parallax */
+
+
+let mouseX = 0;
+let mouseY = 0;
+
+
+document.addEventListener(
+"mousemove",
+(e)=>{
+
+
+mouseX =
+(e.clientX/window.innerWidth-.5)*20;
+
+
+mouseY =
+(e.clientY/window.innerHeight-.5)*20;
+
+
+
+document.getElementById("stars").style.transform =
+
+`translate(${mouseX}px,${mouseY}px)`;
+
+
+
+});
