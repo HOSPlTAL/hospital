@@ -1,7 +1,7 @@
 const links = {
 
 youtube:"https://www.youtube.com/@%E5%A5%B8",
-discord:"https://discord.gg/hospital",
+discord:"https://discord.gg/hospitals",
 tiktok:"https://www.tiktok.com/@goodbyeyoucruelworld"
 
 };
